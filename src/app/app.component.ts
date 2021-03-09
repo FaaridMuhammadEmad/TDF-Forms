@@ -24,12 +24,13 @@ export class AppComponent {
       this.topicHasError=false;
     }
   }
-  onSubmit(){
-    this.submitted = true;
-    this._enrollmentService.enroll(this.userModel)
-    .subscribe(
-      data => console.log("Success!", data),
-      error => this.errorMsg=error.statusText
-    )
+  onSubmit(userform:any){
+    console.log(userform)
+    // this.submitted = true;
+    // this._enrollmentService.enroll(this.userModel)
+    // .subscribe(
+    //   data => console.log("Success!", data),
+    //   error => this.errorMsg=error.statusText
+    // )
   }
 }
