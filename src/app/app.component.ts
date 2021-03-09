@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { User } from './user';
 
 @Component({
   selector: 'app-root',
@@ -8,4 +9,6 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'tdf-forms';
   topics = ['Angular', 'React','Node', 'Android'];
+
+  userModel = new User('','faarid@gmail.com', parseInt('023282'), '','morning',true);
 }
