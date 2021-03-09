@@ -73,6 +73,6 @@
       </label>
     </div>
 
-    <button type="button" class="btn btn-success">Submit</button>
+    <button [disabled]="userForm.form.invalid" type="button" class="btn btn-primary">Submit</button>
   </form>
 </div>

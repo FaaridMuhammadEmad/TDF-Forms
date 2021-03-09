@@ -10,7 +10,7 @@ export class AppComponent {
   title = 'tdf-forms';
   topics = ['Angular', 'React','Node', 'Android'];
   topicHasError = true;
-  userModel = new User('','faarid@gmail.com', parseInt('023282'), 'default','morning',true);
+  userModel = new User('Faarid','faarid@gmail.com', parseInt('1231231231'), 'default','morning',true);
 
   validateTopic(value:any){
     if(value==='default'){
