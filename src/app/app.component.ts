@@ -13,7 +13,8 @@ export class AppComponent {
   topics = ['Angular', 'React','Node', 'Android'];
   topicHasError = true;
   userModel = new User('Faarid','faarid@gmail.com', parseInt('1231231231'), 'default','morning',true);
-
+  submitted = false;
+  errorMsg='';
   constructor(private _enrollmentService: EnrollmentService){}
 
   validateTopic(value:any){
@@ -24,10 +25,11 @@ export class AppComponent {
     }
   }
   onSubmit(){
+    this.submitted = true;
     this._enrollmentService.enroll(this.userModel)
     .subscribe(
       data => console.log("Success!", data),
-      error => console.log("Error", error)
+      error => this.errorMsg=error.statusText
     )
   }
 }
