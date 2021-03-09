@@ -39,14 +39,20 @@
     <div class="form-group">
       <label>Phone</label>
       <input type="tel" required #phone="ngModel" pattern="^\d{10}$" [class.is-invalid]="phone.invalid && phone.touched" class="form-control" name="phone" [(ngModel)]="userModel.phone">
-      <small class="text-danger" [class.d-none]="phone.valid || phone.untouched">Phone number must be 10 digits</small>
+      <!-- <small class="text-danger" [class.d-none]="phone.valid || phone.untouched">Phone number must be 10 digits</small> -->
+    <div *ngIf="phone.errors && (phone.invalid || phone.touched)">
+      <small class="text-danger" *ngIf="phone.errors.required">Phone number is required</small>
+      <small class="text-danger" *ngIf="phone.errors.pattern && phone.touched">Phone number must be 10 digits</small>
+    </div>
     </div>
 
-    <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="topic" [(ngModel)]="userModel.topic">
-      <option value=" ">Open this select menu</option>
+    <select (blur)="validateTopic(topic.value)" (change)="validateTopic(topic.value)" class="form-select form-select-sm" required 
+    #topic="ngModel" [class.is-invalid]="topicHasError && topic.touched"
+     aria-label=".form-select-sm example" name="topic" [(ngModel)]="userModel.topic">
+      <option value="default">Open this select menu</option>
       <option *ngFor="let topic of topics">{{topic}}</option>
     </select>
- 
+    <small class="text-danger" [class.d-none]="!topicHasError || topic.untouched">Please select a topic</small>
 
     <div class="mb-3">
       <label>Time Preference</label>
