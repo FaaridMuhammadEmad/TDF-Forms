@@ -2,7 +2,7 @@
 
 <div class="container-fluid mb-5">
   <h1>Bootcamp Enrollment Form</h1>
-  <form #userForm="ngForm">
+  <form #userForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
     <!-- {{userForm.value | json}} -->
   <hr>
   <!-- {{userModel | json}} -->
@@ -73,6 +73,6 @@
       </label>
     </div>
 
-    <button [disabled]="userForm.form.invalid" type="button" class="btn btn-primary">Submit</button>
+    <button [disabled]="userForm.form.invalid || topicHasError" type="submit" class="btn btn-primary">Submit</button>
   </form>
 </div>
